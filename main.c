@@ -56,6 +56,8 @@ int keys(int keycode, t_vars *vars)
 	return (0);
 }
 
+int render_next_frame(void *vars);
+
 int	main()
 {
 	t_vars	vars;
@@ -72,6 +74,7 @@ int	main()
 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hey");
+	mlx_loop_hook(vars.mlx, render_next_frame, vars.mlx);
 	img = mlx_xpm_file_to_image(vars.mlx, "./images/collectible.xpm", &img_width,
 			&img_height);
 	img2 = mlx_xpm_file_to_image(vars.mlx, "./images/wall.xpm", &img_width,
