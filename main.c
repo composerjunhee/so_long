@@ -1,27 +1,5 @@
 #include "include/solong.h"
 
-// typedef struct s_info
-// {
-
-// }
-
-// int	print_map(t_info *info)
-// {
-// 	int	row;
-// 	int	col;
-
-// 	row = -1;
-// 	while (++row < info->map.row)
-// 	{
-// 		col = -1;
-// 		while (++col < info->map.col)
-// 		{
-// 			put_img(info, row, col);
-// 		}
-// 	}
-// 	return (0);
-// }
-
 //int render_next_frame(void *vars);
 
 int	main()
@@ -52,7 +30,7 @@ int	main()
 	mlx_put_image_to_window(vars.mlx, vars.win, img2, 0, 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, img2, 32, 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, img4, 64, 0);
-	mlx_hook(vars.win, 2, 1L<<0, keys, &vars);
+	mlx_hook(vars.win, KEY_RELEASE, 1L<<0, keys, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
