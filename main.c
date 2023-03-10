@@ -1,36 +1,43 @@
 #include "include/solong.h"
 
-//int render_next_frame(void *vars);
-
-int	main()
+int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_game	game;
+	t_img	image;
 
-	void	*img;
-	void	*img2;
-	void	*img3;
-	void	*img4;
-	void	*img5;
 	int		img_width;
 	int		img_height;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hey");
+	if (argc != 2)
+	{
+		write(1,"We need Map file\n", 17);
+		exit(1);
+	}
+	fd = open(filename, O_RDONLY);
+		if (fd <= 0)
+			write(1, "File open fail.\n", 16);
+
+
+	(void)argv;
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hey");
 	//mlx_loop_hook(vars.mlx, render_next_frame, vars.mlx);
-	img = mlx_xpm_file_to_image(vars.mlx, "./images/collectible.xpm", &img_width,
+	image.collectible = mlx_xpm_file_to_image(game.mlx, "./images/collectible.xpm", &img_width,
 			&img_height);
-	img2 = mlx_xpm_file_to_image(vars.mlx, "./images/wall.xpm", &img_width,
+	image.wall= mlx_xpm_file_to_image(game.mlx, "./images/wall.xpm", &img_width,
 			&img_height);
-	img3 = mlx_xpm_file_to_image(vars.mlx, "./images/flower01.xpm", &img_width,
+	image.land = mlx_xpm_file_to_image(game.mlx, "./images/grass.xpm", &img_width,
 			&img_height);
-	img4 = mlx_xpm_file_to_image(vars.mlx, "./images/grass.xpm", &img_width,
+	image.flower = mlx_xpm_file_to_image(game.mlx, "./images/flower01.xpm", &img_width,
 			&img_height);
-	img5 = mlx_xpm_file_to_image(vars.mlx, "./images/exit.xpm", &img_width,
+	image.exit = mlx_xpm_file_to_image(game.mlx, "./images/exit.xpm", &img_width,
 			&img_height);
-	mlx_put_image_to_window(vars.mlx, vars.win, img2, 0, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, img2, 32, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, img4, 64, 0);
-	mlx_hook(vars.win, KEY_RELEASE, 1L<<0, keys, &vars);
-	mlx_loop(vars.mlx);
+	mlx_put_image_to_window(game.mlx, game.win, image.wall, 0, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.wall, 32, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.land, 64, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.exit, 96, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.flower, 128, 0);
+	mlx_hook(game.win, KEY_RELEASE, 1L<<0, keys, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }

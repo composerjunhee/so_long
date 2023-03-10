@@ -7,12 +7,15 @@
 # define KEY_D 2
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
-
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 480
 # include "../libft/libft.h"
+# include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 
 typedef struct s_param
 {
@@ -26,7 +29,30 @@ typedef struct s_vars
 	void	*win;
 }			t_vars;
 
+typedef struct s_img
+{
+	void	*collectible;
+	void	*land;
+	void	*wall;
+	void	*exit;
+	void	*flower;
+	void	*character;
+}			t_img;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	t_img	img;
+	int		wid;
+	int		hei;
+	char	*str_line;
+	int		all_col;
+	int		col_cnt;
+	int		walk_cnt;
+}			t_game;
+
 int			keys(int keycode, t_vars *vars);
-//int render_next_frame(void *vars);
+void		map_read(char *filename, t_game *game);
 
 #endif
