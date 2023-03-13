@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 
 typedef struct s_param
 {
@@ -42,7 +43,7 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	char	*pos;
+	char	**pos;
 }			t_map;
 
 typedef struct s_game

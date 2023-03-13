@@ -19,15 +19,15 @@ void malloc_map(t_game *game, char *filename)
 	int	fd;
 	int	i;
 
-	fd = open_file(filename);
+	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
-	game->hei = 0;
-	game->wid = ft_strlen(line) - 1;
+	game->map.height = 0;
+	game->map.width = ft_strlen(line) - 1;
 	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
-		game->hei++;
+		game->map.height++;
 	}
 	close(fd);
 	game->map.pos = (char **)malloc(game->map.height * sizeof(char *));
@@ -42,4 +42,21 @@ void malloc_map(t_game *game, char *filename)
 		if (game->map.width != ft_strlen(line))
 		free(line);
 	}
+}
+void	is_walled(t_game *game) //Wall Checking
+{
+	int	i;
+
+	i = -1;
+	while (++i < game->map.height)
+		if (game->map.pos[i][0] != '1' || \
+				game->map.pos[i][game->map.width - 1] != '1')
+			write(1,"Not Walled\n", 11);
+			exit(1);
+	i = -1;
+	while (++i < game->map.width)
+		if (game->map.pos[0][i] != '1' || \
+				game->map.pos[game->map.height - 1][i] != '1')
+			write(1,"Not Walled\n", 11);
+			exit(1);
 }
