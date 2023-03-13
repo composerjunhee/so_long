@@ -1,6 +1,6 @@
 #include "include/solong.h"
 
-int keys(int keycode, t_vars *vars)
+int keys(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
 	{
@@ -21,7 +21,7 @@ int keys(int keycode, t_vars *vars)
 	else if (keycode == KEY_ESC)
 	{
 		printf("Escaped -> %d\n", keycode);
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_window(game->mlx, game->win);
 	}
 	return (0);
 }

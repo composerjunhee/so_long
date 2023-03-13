@@ -15,7 +15,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <fcntl.h>
 
 typedef struct s_param
 {
@@ -23,11 +22,11 @@ typedef struct s_param
 	int		y;
 }			t_param;
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
+// typedef struct s_vars
+// {
+// 	void	*mlx;
+// 	void	*win;
+// }			t_vars;
 
 typedef struct s_img
 {
@@ -39,11 +38,19 @@ typedef struct s_img
 	void	*character;
 }			t_img;
 
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	char	*pos;
+}			t_map;
+
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	t_img	img;
+	t_map	map;
 	int		wid;
 	int		hei;
 	char	*str_line;
@@ -52,7 +59,7 @@ typedef struct s_game
 	int		walk_cnt;
 }			t_game;
 
-int			keys(int keycode, t_vars *vars);
+int			keys(int keycode, t_game *game);
 void		map_read(char *filename, t_game *game);
 
 #endif

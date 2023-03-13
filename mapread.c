@@ -7,13 +7,13 @@ void	map_read(char *filename, t_game *game)
 
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
-	game->hei = 0;
-	game->wid = ft_strlen(line) - 1;
+	game->map.height = 0;
+	game->map.width = ft_strlen(line) - 1;
 	game->str_line = ft_strdup(line);
 	free(line);
 	while (line)
 	{
-		game->hei++;
+		game->map.hei++;
 		line = get_next_line(fd);
 		if (line)
 		{

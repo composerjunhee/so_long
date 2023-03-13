@@ -13,10 +13,8 @@ int	main(int argc, char **argv)
 		write(1,"We need Map file\n", 17);
 		exit(1);
 	}
-	fd = open(filename, O_RDONLY);
-		if (fd <= 0)
-			write(1, "File open fail.\n", 16);
 
+	//map_read;
 
 	(void)argv;
 	game.mlx = mlx_init();
