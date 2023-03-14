@@ -15,13 +15,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <fcntl.h>
 
 typedef struct s_param
 {
-	int		x;
-	int		y;
-}			t_param;
+	int			x;
+	int			y;
+}				t_param;
 
 // typedef struct s_vars
 // {
@@ -31,34 +30,51 @@ typedef struct s_param
 
 typedef struct s_img
 {
-	void	*collectible;
-	void	*land;
-	void	*wall;
-	void	*exit;
-	void	*flower;
-	void	*character;
-}			t_img;
+	void		*collectible;
+	void		*land;
+	void		*wall;
+	void		*exit;
+	void		*flower;
+	void		*character;
+}				t_img;
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
-	char	**pos;
-}			t_map;
+	int			width;
+	int			height;
+	char		**pos;
+}				t_map;
+
+typedef struct s_player
+{
+	int			x;
+	int			y;
+	int			col_counter;
+	int			key_block;
+}				t_player;
 
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	t_img	img;
-	t_map	map;
-	int		wid;
-	int		hei;
-	char	*str_line;
-	int		walk_counter;
-}			t_game;
+	void		*mlx;
+	void		*win;
+	t_img		img;
+	t_map		map;
+	t_player	player;
+	int			wid;
+	int			hei;
+	char		*str_line;
+	int			col_num;
+	int			walk_counter;
 
-int			keys(int keycode, t_game *game);
-void		map_read(char *filename, t_game *game);
+}				t_game;
+
+int				keys(int keycode, t_game *game);
+void			map_read(char *filename, t_game *game);
+void			exit_event(t_game *game);
+void			setting_img(t_game game);
+int invalid_ext(char *filename);
+void malloc_map(t_game *game, char *filename);
+void	is_walled(t_game *game);
+
 
 #endif
