@@ -32,7 +32,9 @@ int	main(int argc, char **argv)
 			&img_height);
 	mlx_put_image_to_window(game.mlx, game.win, image.wall, 0, 0);
 	mlx_put_image_to_window(game.mlx, game.win, image.wall, 32, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.collectible, 32, 0);
 	mlx_put_image_to_window(game.mlx, game.win, image.land, 64, 0);
+	mlx_put_image_to_window(game.mlx, game.win, image.flower, 64, 0);
 	mlx_put_image_to_window(game.mlx, game.win, image.exit, 96, 0);
 	mlx_put_image_to_window(game.mlx, game.win, image.flower, 128, 0);
 	mlx_hook(game.win, KEY_RELEASE, 1L<<0, keys, &game);

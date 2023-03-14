@@ -8,7 +8,7 @@
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define WINDOW_WIDTH 640
-# define WINDOW_HEIGHT 480
+# define WINDOW_HEIGHT 640
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
@@ -55,9 +55,7 @@ typedef struct s_game
 	int		wid;
 	int		hei;
 	char	*str_line;
-	int		all_col;
-	int		col_cnt;
-	int		walk_cnt;
+	int		walk_counter;
 }			t_game;
 
 int			keys(int keycode, t_game *game);

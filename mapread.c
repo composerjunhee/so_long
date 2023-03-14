@@ -13,7 +13,7 @@ void	map_read(char *filename, t_game *game)
 	free(line);
 	while (line)
 	{
-		game->map.hei++;
+		game->map.height++;
 		line = get_next_line(fd);
 		if (line)
 		{
