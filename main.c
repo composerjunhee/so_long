@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:47:33 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/14 15:04:02 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:17:45 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 	int		img_width;
 	int		img_height;
 
+	//set_game(&game);
 	if (argc != 2)
 	{
 		write(1, "We need Map file\n", 18);

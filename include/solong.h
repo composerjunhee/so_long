@@ -60,11 +60,13 @@ typedef struct s_game
 	t_img		img;
 	t_map		map;
 	t_player	player;
+	int			count_e;
+	int			count_p;
+	int			count_c;
 	int			wid;
 	int			hei;
 	char		*str_line;
-	int			col_num;
-	int			walk_counter;
+	int			count_move;
 
 }				t_game;
 

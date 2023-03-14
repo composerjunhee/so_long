@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:47:20 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/14 13:52:32 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:13:25 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	exit_event(t_game *game)
 
 	if (game->map.pos[player_y][player_x] == 'E')
 	{
-		if(game->col_num == game->player.col_counter)
+		if(game->count_c == game->player.col_counter)
 		{
 			write(1, "Escaped.", 9);
 			exit(0);
