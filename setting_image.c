@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:12:14 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/14 14:14:26 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:17:05 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	setting_img(t_game game)
 			}
 			else if (game.str_line[hei * game.wid + wid] == 'P')
 			{
-				mlx_put_image_to_window(game.mlx, game.win, game.img.character, wid * 64, hei * 64);
+				mlx_put_image_to_window(game.mlx, game.win, game.img.player, wid * 64, hei * 64);
 			}
 			else if (game.str_line[hei * game.wid + wid] == 'E')
 			{

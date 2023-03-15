@@ -35,7 +35,7 @@ typedef struct s_img
 	void		*wall;
 	void		*exit;
 	void		*flower;
-	void		*character;
+	void		*player;
 }				t_img;
 
 typedef struct s_map
@@ -43,12 +43,13 @@ typedef struct s_map
 	int			width;
 	int			height;
 	char		**pos;
+	int			save;
 }				t_map;
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
+	int			player_x;
+	int			player_y;
 	int			col_counter;
 	int			key_block;
 }				t_player;
@@ -65,9 +66,10 @@ typedef struct s_game
 	int			count_c;
 	int			wid;
 	int			hei;
+	int			x;
+	int			y;
 	char		*str_line;
 	int			count_move;
-
 }				t_game;
 
 int				keys(int keycode, t_game *game);
