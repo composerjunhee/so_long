@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:51:41 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/16 13:19:29 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:33:59 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,6 @@
 #define KEY_A	0
 #define KEY_D	2
 #define PRESS_RED_BUTTON	17
-
-typedef struct s_param
-{
-	void *mlx;
-	void *win;
-	void *woodboy;
-	void *g;
-	void *w;
-	void *e;
-	void *c;
-	int count_e;
-	int count_p;
-	int count_c;
-	size_t fd;
-	int	p_x;
-	int p_y;
-	int move;
-	int	x;
-	int	y;
-	int wid;
-	int hei;
-	int win_width;
-	int win_height;
-	int *map;
-}	t_param;
 
 void param_init(t_param *param)
 {

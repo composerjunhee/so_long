@@ -16,63 +16,30 @@
 # include <stdlib.h>
 # include <string.h>
 
-// typedef struct s_param
-// {
-// 	int			x;
-// 	int			y;
-// }				t_param;
-
-// typedef struct s_img
-// {
-// 	void		*collectible;
-// 	void		*land;
-// 	void		*wall;
-// 	void		*exit;
-// 	void		*flower;
-// 	void		*player;
-// }				t_img;
-
-// typedef struct s_map
-// {
-// 	int			width;
-// 	int			height;
-// 	char		**pos;
-// 	int			save;
-// }				t_map;
-
-// typedef struct s_player
-// {
-// 	int			player_x;
-// 	int			player_y;
-// 	int			col_counter;
-// 	int			key_block;
-// }				t_player;
-
-// typedef struct s_game
-// {
-// 	void		*mlx;
-// 	void		*win;
-// 	t_img		img;
-// 	t_map		map;
-// 	t_player	player;
-// 	int			count_e;
-// 	int			count_p;
-// 	int			count_c;
-// 	int			wid;
-// 	int			hei;
-// 	int			x;
-// 	int			y;
-// 	char		*str_line;
-// 	int			count_move;
-// }				t_game;
-
-// int				keys(int keycode, t_game *game);
-// void			map_read(char *filename, t_game *game);
-// void			exit_event(t_game *game);
-// void			setting_img(t_game game);
-// int invalid_ext(char *filename);
-// void malloc_map(t_game *game, char *filename);
-// void	is_walled(t_game *game);
+typedef struct s_param
+{
+	void *mlx;
+	void *win;
+	void *woodboy;
+	void *g;
+	void *w;
+	void *e;
+	void *c;
+	int count_e;
+	int count_p;
+	int count_c;
+	size_t fd;
+	int	p_x;
+	int p_y;
+	int move;
+	int	x;
+	int	y;
+	int wid;
+	int hei;
+	int win_width;
+	int win_height;
+	int *map;
+}	t_param;
 
 typedef struct s_mapline
 {
