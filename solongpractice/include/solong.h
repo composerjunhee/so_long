@@ -80,6 +80,7 @@ typedef struct s_mapline
 	void	*nextline;
 	void	*next;
 	void	*line;
+	void	*curline;
 
 }			t_mapline;
 
