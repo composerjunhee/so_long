@@ -6,18 +6,11 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:51:41 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/16 13:33:59 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:11:43 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/solong.h"
-
-#define KEY_ESC	53
-#define KEY_W	13
-#define KEY_S	1
-#define KEY_A	0
-#define KEY_D	2
-#define PRESS_RED_BUTTON	17
 
 void param_init(t_param *param)
 {
@@ -145,7 +138,7 @@ void	freemap(t_param *par) // free all allocated memory
 		free (currline); // 현재 공간을 해제
 		currline = nextline; // 다음 연결리스트로 이동
 	}
-	free (currline); // 마지막에 보고있던 저장공간 해제
+	free (currline); // Free last one
 }
 
 int copyline(char *str, t_param *par)
@@ -186,6 +179,34 @@ int copymap(t_param *par)
 	return (1);
 }
 
+int check_map_char(t_param *par) // check resources in map
+{
+	t_mapline *curline;
+	char *str;
+
+	curline = par->map;
+	while(curline)
+	{
+		str = curline->line;
+		while(*str != '\n')
+		{
+			if (*str == 'E')
+				par->count_e++;
+			else if (*str == 'P')
+				par->count_p++;
+			else if (*str == 'C')
+				par->count_c++;
+			else if (*str != '1' && *str != '0')
+				return (0);
+			str++;
+		}
+		curline = curline->next;
+	}
+	if (par->count_e !=1 || par->count_p !=1 || par->count_c < 1)
+		return(ft_printf("Error, number of E, P, C are not right"));
+	return(1);
+}
+
 int check_map(t_param *par)
 {
 	int map_line; //how many lines in map
@@ -195,7 +216,9 @@ int check_map(t_param *par)
 	par->win_width = (ft_strlen(par->map->line) - 1) * par->wid; //calculate width of window
 	if (map_line) // check number of lines
 		if(check_wall(par, map_line))
-
+			if(check_map_char(par))
+				return(1);
+	return (0);
 }
 
 void set_param(t_param *par)
@@ -223,6 +246,12 @@ void set_param(t_param *par)
 	par->win = NULL;
 }
 
+int close(void)
+{
+	exit(0);
+	return(0);
+}
+
 int main(void)
 {
 	t_param	par;
@@ -247,18 +276,8 @@ int main(void)
 	set_p(&par);
 	par.win = mlx_new_window(par.mlx, par.win_width, par.win_height, "so_long");
 	drawmap(&par);
-	par.woodboy =mlx_xpm_file_to_image(par.mlx, "images/woodboy.xpm", &par.wid, &par.hei);
-	par.c = mlx_xpm_file_to_image(par.mlx,
-			"./images/collectible.xpm", &par.wid, &par.hei);
-	par.w = mlx_xpm_file_to_image(par.mlx, "./images/wall.xpm",
-			&par.wid, &par.hei);
-	par.g = mlx_xpm_file_to_image(par.mlx, "./images/grass.xpm",
-			&par.wid, &par.hei);
-	par.e = mlx_xpm_file_to_image(par.mlx, "./images/exit.xpm",
-			&par.wid, &par.hei);
-
 	mlx_key_hook(par.win, &key_press, &par);
-	mlx_loop_hook(par.mlx, &draw, &par);
+	mlx_hook(par.win, PRESS_RED_BUTTON, 0, &close, &par);
 	mlx_loop(par.mlx);
 	return(0);
 }

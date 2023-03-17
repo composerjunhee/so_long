@@ -5,6 +5,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define PRESS_RED_BUTTON	17
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define WINDOW_WIDTH 640
@@ -15,6 +16,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+
+typedef struct s_mapline
+{
+	void	*currline;
+	void	*nextline;
+	void	*next;
+	void	*line;
+	void	*curline;
+
+}			t_mapline;
 
 typedef struct s_param
 {
@@ -29,6 +40,7 @@ typedef struct s_param
 	int count_p;
 	int count_c;
 	size_t fd;
+	t_mapline *map;
 	int	p_x;
 	int p_y;
 	int move;
@@ -38,17 +50,10 @@ typedef struct s_param
 	int hei;
 	int win_width;
 	int win_height;
-	int *map;
+	//int *map;
 }	t_param;
 
-typedef struct s_mapline
-{
-	void	*currline;
-	void	*nextline;
-	void	*next;
-	void	*line;
-	void	*curline;
-
-}			t_mapline;
+int drawmap(t_param *par);
+void draw_img(char a, t_param *par, int x, int y);
 
 #endif

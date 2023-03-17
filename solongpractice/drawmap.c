@@ -6,11 +6,33 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:22:52 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/16 16:39:23 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:05:12 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/solong.h"
+
+void draw_img(char a, t_param *par, int x, int y)
+{
+	if (a == '0') //if chracter is '0'
+		mlx_put_image_to_window(par->mlx, par->win, par->g, x, y); //draw land image
+	else if (a == '1') //if chracter is '1'
+	{
+
+		mlx_put_image_to_window(par->mlx, par->win, par->g, x, y);
+		mlx_put_image_to_window(par->mlx, par->win, par->w, x, y); //draw land and wall
+	}
+	else if (a == 'P' || a == 'C' || a =='E') //if chracter is P,C or E
+	{
+		mlx_put_image_to_window(par->mlx, par->win, par->g, x, y);
+		if (a == 'P')
+			mlx_put_image_to_window(par->mlx, par->win, par->woodboy, x, y);
+		else if (a == 'C')
+			mlx_put_image_to_window(par->mlx, par->win, par->c, x, y);
+		else if (a == 'E')
+			mlx_put_image_to_window(par->mlx, par->win, par->e, x, y);
+	}
+}
 
 int drawmap(t_param *par)
 {
@@ -22,4 +44,13 @@ int drawmap(t_param *par)
 	x = 0;
 	y = 0;
 	mlx_clear_window(par->mlx, par->win); // erase all the images in window
+	currline = par->map;
+	while(currline)
+	{
+		str = currline->line;
+		while( *str!='\n')
+		{
+			draw_img(*str, par, x, y);
+		}
+	}
 }
