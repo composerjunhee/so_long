@@ -36,10 +36,22 @@ typedef struct s_game
 	int		walk_cnt;
 }			t_game;
 
+//util.c
+int			ft_strleni(const char *str);
+char		*ft_strdupn(char *s);
+int			ft_strlcpyn(char *dst, char *src, int len);
+char		*ft_strjoinn(char *s1, char *s2);
+
+//map.c
+void		map_read(char *filename, t_game *game);
+void		map_check_wall(t_game *game);
+void		map_check_params(t_game *game);
+void		map_check(t_game *game);
+
 //image.c
-t_img	img_init(void *mlx);
-void put_img(t_game *g, int w, int h);
-void setting_img(t_game *game);
+t_img		img_init(void *mlx);
+void		put_img(t_game *g, int w, int h);
+void		setting_img(t_game *game);
 
 //keycode.c
 

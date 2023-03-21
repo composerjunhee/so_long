@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:09:51 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 16:19:31 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:04:12 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void put_img(t_game *g, int w, int h)
 	}
 	else if(g->str_line[h * g->wid + w] == 'E')
 	{
-		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
+		mlx_put_image_to_window(g->mlx, g->win, g->img.exit, w * 32, h * 32);
 	}
 	else
 	{

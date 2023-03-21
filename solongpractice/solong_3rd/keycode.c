@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:54:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 16:07:05 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:37:28 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void move_w(t_game *g)
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strlen(g->str_line))
+	while(i++ < ft_strleni(g->str_line))
 	{
 		if(g->str_line[i] == 'P') //startpoint
 			break ;
@@ -48,7 +48,7 @@ void move_a(t_game *g)
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strlen(g->str_line))
+	while(i++ < ft_strleni(g->str_line))
 	{
 		if(g->str_line[i] == 'P') //startpoint
 			break ;
@@ -72,7 +72,7 @@ void move_s(t_game *g)
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strlen(g->str_line))
+	while(i++ < ft_strleni(g->str_line))
 	{
 		if(g->str_line[i] == 'P') //startpoint
 			break ;
@@ -96,7 +96,7 @@ void move_d(t_game *g)
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strlen(g->str_line))
+	while(i++ < ft_strleni(g->str_line))
 	{
 		if(g->str_line[i] == 'P') //startpoint
 			break ;

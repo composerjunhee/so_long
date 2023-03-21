@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   solong.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:55:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 15:53:08 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:00:58 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_err(char *message)
 {
 	write(2, "Error\n", 6);
-	write(2, message, ft_strlen(message));
+	write(2, message, ft_strleni(message));
 	exit(1);
 }
 
@@ -25,7 +25,7 @@ void	game_init(t_game *g, char *map)
 	g->img = img_init(g->mlx);
 	map_read(map, g);
 	map_check(g);
-	g->win = mlx_new_window(g->mlx, g->wid * 64, g->hei * 64, "so_long");
+	g->win = mlx_new_window(g->mlx, g->wid * 32, g->hei * 32, "so_long");
 	setting_img(g);
 }
 
