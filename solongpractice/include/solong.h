@@ -53,7 +53,13 @@ typedef struct s_param
 	//int *map;
 }	t_param;
 
-int drawmap(t_param *par);
-void draw_img(char a, t_param *par, int x, int y);
+int 	drawmap(t_param *par);
+void 	draw_img(char a, t_param *par, int x, int y);
+int		key_press(int keycode, t_param *param);
+void	move_left(t_param *par, int y);
+void	move_right(t_param *par, int y);
+void	move_up(t_param *par, int y);
+void	move_down(t_param *par, int y);
+void	set_p(t_param *par);
 
 #endif

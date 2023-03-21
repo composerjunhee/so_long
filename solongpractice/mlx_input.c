@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:51:41 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/17 15:11:43 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:48:05 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,6 @@ void param_init(t_param *param)
 {
 	param->x = 3;
 	param->y = 4;
-}
-
-int	key_press(int keycode, t_param *param)
-// 입력에따라 좌표로 사용할 값을 증감시킴
-{
-	if (keycode == KEY_W && param->y != 0)
-		param->y -= param->hei;
-	if (keycode == KEY_S && param->y != 800)
-		param->y += param->hei;
-	else if (keycode == KEY_A && param->x != 0)
-		param->x -= param->wid;
-	else if (keycode == KEY_D && param->x != 800)
-		param->x += param->wid;
-	else if (keycode == KEY_ESC)
-		exit(0);
-	ft_printf("y: %d x: %d\n", param->y, param->x);
-	return (0);
 }
 
 int draw(t_param *loc)
@@ -244,6 +227,30 @@ void set_param(t_param *par)
 	par->e = mlx_xpm_file_to_image(par->mlx, "imgs/exit.xpm", &par->wid, &par->hei);
 	par->woodboy = mlx_xpm_file_to_image(par->mlx, "imgs/woodboy.xpm", &par->wid, &par->hei);
 	par->win = NULL;
+}
+
+void	set_p(t_param *par) // 플레이어의 현재 좌표를 찾는 함수
+{
+	t_mapline	*curline;
+	char		*str;
+
+	curline = par->map;
+	par->p_x = 0;
+	par->p_y = 0;
+	while (curline) //맵 문자열을 순회
+	{
+		str = curline->line;
+		while (*str != '\n') // 문자열의 끝까지 순회
+		{
+			if (*str == 'P') // 플레이어의 위치인 P가 나올때까지
+				return ;
+			str++;
+			par->p_x++; // x좌표값을 증가시킴
+		}
+		curline = curline->next;
+		par->p_x = 0; // 새로운 문자열로 가야하니 x좌표값 초기화
+		par->p_y++; // 문자열을 바꿀때마다 y좌표값 증가
+	}
 }
 
 int close(void)

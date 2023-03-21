@@ -1,5 +1,5 @@
 NAME := solong
-SRCS := mlx_input.c drawmap.c keypress.c
+SRCS := main.c
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
 FLAGS := -Wall -Wextra -Werror

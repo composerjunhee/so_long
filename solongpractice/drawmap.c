@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:22:52 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/17 15:05:12 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:00:42 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ int drawmap(t_param *par)
 		while( *str!='\n')
 		{
 			draw_img(*str, par, x, y);
+			str++;
+			x += par->wid;
+            // 이미지가 그려질 x좌표값을 이미지의 너비만큼 증가시켜줌
 		}
+		currline = currline->next; // 다음 문자열로
+		x = 0;
+		y += par->hei;
+        // 이미지가 그려질 y좌표값을 이미지의 높이만큼 증가시켜줌
 	}
+	return (0);
 }
