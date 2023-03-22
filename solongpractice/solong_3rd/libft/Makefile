@@ -6,7 +6,7 @@
 #    By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/22 11:55:04 by junheeki          #+#    #+#              #
-#    Updated: 2023/02/27 14:56:10 by junheeki         ###   ########.fr        #
+#    Updated: 2023/03/22 14:50:47 by junheeki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(SRC)
-	cc -Wall -Wextra -Werror -c $(SRC)
+	cc -Wall -Wextra -Werror -g -c $(SRC)
 	ar rcs $(NAME) $(OBJ)
 
 bonus: $(SRCS_BONUS:.c=.o)

@@ -2,7 +2,7 @@ NAME := solong
 SRCS := solong.c image.c keycode.c map.c util.c
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
