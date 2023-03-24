@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:55:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 17:00:58 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:00:41 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_err(char *message)
 {
 	write(2, "Error\n", 6);
-	write(2, message, ft_strleni(message));
+	write(2, message, ft_strlen(message));
 	exit(1);
 }
 

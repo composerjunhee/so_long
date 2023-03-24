@@ -34,7 +34,14 @@ typedef struct s_game
 	int		all_col;
 	int		col_cnt;
 	int		walk_cnt;
+	int		start;
+	int		end;
 }			t_game;
+
+typedef struct s_queue {
+	int x;
+	int y;
+}				t_queue;
 
 //util.c
 int			ft_strleni(const char *str);
@@ -47,6 +54,7 @@ void		map_read(char *filename, t_game *game);
 void		map_check_wall(t_game *game);
 void		map_check_params(t_game *game);
 void		map_check(t_game *game);
+int			pathfinding(t_game *game, int start, int end);
 
 //image.c
 t_img		img_init(void *mlx);

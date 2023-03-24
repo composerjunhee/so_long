@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:20:31 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 16:49:44 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:36:42 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void map_read(char *filename, t_game *game)
 	line = get_next_line(fd);
 	game->hei = 0;
 	game->walk_cnt = 0;
-	game->wid = ft_strleni(line) - 1;
+	game->wid = ft_strlen(line) - 1;
 	game->str_line = ft_strdupn(line);
 	free(line);
 	while(line)
@@ -92,10 +92,86 @@ void	map_check_params(t_game *game)
 		print_err("Map must have one starting position\n");
 }
 
+// // pathfinding function
+// int pathfinding(t_game *game, int start, int end)
+// {
+// 	int *queue;
+// 	int visited[game->wid * game->hei];
+// 	int parent[game->wid * game->hei];
+// 	int front = 0, rear = 0;
+// 	int curr, next;
+
+// 	queue = malloc(sizeof(int) * game->wid * game->hei);
+// 	if (!queue)
+// 		print_err("Memory allocation error.\n");
+
+// 	// initialize visited and parent arrays
+// 	for (int i = 0; i < game->wid * game->hei; i++)
+// 	{
+// 		visited[i] = 0;
+// 		parent[i] = -1;
+// 	}
+
+// 	// start from the player's position
+// 	queue[rear++] = start;
+// 	visited[start] = 1;
+
+// 	while (front < rear)
+// 	{
+// 		curr = queue[front++];
+
+// 		if (curr == end)
+// 		{
+// 			free(queue);
+// 			return 1;
+// 		}
+
+// 		// check north neighbor
+// 		next = curr - game->wid;
+// 		if (next >= 0 && game->str_line[next] == 0 && !visited[next])
+// 		{
+// 			queue[rear++] = next;
+// 			parent[next] = curr;
+// 			visited[next] = 1;
+// 		}
+
+// 		// check south neighbor
+// 		next = curr + game->wid;
+// 		if (next < game->wid * game->hei && game->str_line[next] == 0 && !visited[next])
+// 		{
+// 			queue[rear++] = next;
+// 			parent[next] = curr;
+// 			visited[next] = 1;
+// 		}
+
+// 		// check west neighbor
+// 		next = curr - 1;
+// 		if (curr % game->wid > 0 && game->str_line[next] == 0 && !visited[next])
+// 		{
+// 			queue[rear++] = next;
+// 			parent[next] = curr;
+// 			visited[next] = 1;
+// 		}
+
+// 		// check east neighbor
+// 		next = curr + 1;
+// 		if (curr % game->wid < game->wid - 1 && game->str_line[next] == 0 && !visited[next])
+// 		{
+// 			queue[rear++] = next;
+// 			parent[next] = curr;
+// 			visited[next] = 1;
+// 		}
+// 	}
+
+// 	free(queue);
+// 	return 0;
+// }
+
 void	map_check(t_game *game)
 {
 	if (game->hei * game->wid != ft_strleni(game->str_line))
 		print_err("Map must be rectangular.\n");
 	map_check_wall(game);
 	map_check_params(game);
+	// pathfinding(game, 'P', 'E');
 }
