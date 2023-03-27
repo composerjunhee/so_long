@@ -6,16 +6,16 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:20:31 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:36:42 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:13:03 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/solong.h"
 
-void map_read(char *filename, t_game *game)
+void	map_read(char *filename, t_game *game)
 {
-	int	fd;
-	char *line;
+	int		fd;
+	char	*line;
 
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
@@ -23,14 +23,14 @@ void map_read(char *filename, t_game *game)
 	line = get_next_line(fd);
 	game->hei = 0;
 	game->walk_cnt = 0;
-	game->wid = ft_strlen(line) - 1;
+	game->wid = ft_strleni(line) - 1;
 	game->str_line = ft_strdupn(line);
 	free(line);
-	while(line)
+	while (line)
 	{
 		game->hei++;
 		line = get_next_line(fd);
-		if(line)
+		if (line)
 		{
 			game->str_line = ft_strjoinn(game->str_line, line);
 		}
@@ -40,7 +40,7 @@ void map_read(char *filename, t_game *game)
 
 void	map_check_wall(t_game *game)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < ft_strleni(game->str_line))
@@ -93,28 +93,35 @@ void	map_check_params(t_game *game)
 }
 
 // // pathfinding function
-// int pathfinding(t_game *game, int start, int end)
-// {
-// 	int *queue;
-// 	int visited[game->wid * game->hei];
-// 	int parent[game->wid * game->hei];
-// 	int front = 0, rear = 0;
-// 	int curr, next;
+// queue = pos
+// rear = back
+int	pathfinding(t_game *game, int start, int end)
+{
+	int	*pos;
+	int	visited[game->wid * game->hei];
+	int	parent[game->wid * game->hei];
+	int front = 0;
+	int back = 0;
+	int curr;
+	int next;
 
-// 	queue = malloc(sizeof(int) * game->wid * game->hei);
-// 	if (!queue)
-// 		print_err("Memory allocation error.\n");
+	pos = malloc(sizeof(int) * game->wid * game->hei);
+	if (!pos)
+		print_err("MEMORY ERROR.\n");
 
-// 	// initialize visited and parent arrays
-// 	for (int i = 0; i < game->wid * game->hei; i++)
-// 	{
-// 		visited[i] = 0;
-// 		parent[i] = -1;
-// 	}
+// initialize visited and parent arrays
+	int i = 0;
+	while (i < game->wid * game->hei)
+	{
+		visited[i] = 0;
+		parent[i] = -1;
+    	i++;
+	}
+	pos[back++] = start; //start from the player's position
+	visited[start] = 1;
 
-// 	// start from the player's position
-// 	queue[rear++] = start;
-// 	visited[start] = 1;
+	while (front < back)
+}
 
 // 	while (front < rear)
 // 	{
@@ -123,7 +130,7 @@ void	map_check_params(t_game *game)
 // 		if (curr == end)
 // 		{
 // 			free(queue);
-// 			return 1;
+// 			return (1);
 // 		}
 
 // 		// check north neighbor
@@ -137,7 +144,8 @@ void	map_check_params(t_game *game)
 
 // 		// check south neighbor
 // 		next = curr + game->wid;
-// 		if (next < game->wid * game->hei && game->str_line[next] == 0 && !visited[next])
+// 		if (next < game->wid * game->hei && game->str_line[next] == 0
+//				&& !visited[next])
 // 		{
 // 			queue[rear++] = next;
 // 			parent[next] = curr;
@@ -155,7 +163,8 @@ void	map_check_params(t_game *game)
 
 // 		// check east neighbor
 // 		next = curr + 1;
-// 		if (curr % game->wid < game->wid - 1 && game->str_line[next] == 0 && !visited[next])
+// 		if (curr % game->wid < game->wid - 1 && game->str_line[next] == 0
+//				&& !visited[next])
 // 		{
 // 			queue[rear++] = next;
 // 			parent[next] = curr;
@@ -164,7 +173,7 @@ void	map_check_params(t_game *game)
 // 	}
 
 // 	free(queue);
-// 	return 0;
+// 	return (0);
 // }
 
 void	map_check(t_game *game)

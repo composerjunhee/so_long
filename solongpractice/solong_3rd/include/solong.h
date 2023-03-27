@@ -14,6 +14,12 @@
 # include <mlx.h>
 # include <stdio.h>
 
+typedef struct s_pos
+{
+	int		x;
+	int		y;
+}			t_pos;
+
 typedef struct s_img
 {
 	void	*player;
@@ -28,6 +34,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
+	t_pos	*pos;
 	int		wid;
 	int		hei;
 	char	*str_line;
@@ -38,10 +45,11 @@ typedef struct s_game
 	int		end;
 }			t_game;
 
-typedef struct s_queue {
-	int x;
-	int y;
-}				t_queue;
+typedef struct s_queue
+{
+	int		x;
+	int		y;
+}			t_queue;
 
 //util.c
 int			ft_strleni(const char *str);
