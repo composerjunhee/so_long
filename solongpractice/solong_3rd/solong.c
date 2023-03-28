@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:55:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/24 12:00:41 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:41:47 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	print_err(char *message)
 	exit(1);
 }
 
-void	game_init(t_game *g, char *map)
+void	game_init(t_game *game, char *map)
 {
-	g->mlx = mlx_init();
-	g->img = img_init(g->mlx);
-	map_read(map, g);
-	map_check(g);
-	g->win = mlx_new_window(g->mlx, g->wid * 32, g->hei * 32, "so_long");
-	setting_img(g);
+	game->mlx = mlx_init();
+	game->img = img_init(game->mlx);
+	map_read(map, game);
+	map_check(game);
+	game->win = mlx_new_window(game->mlx, game->wid * 32, game->hei * 32, "so_long");
+	setting_img(game);
 }
 
 int	exit_game(t_game *game)

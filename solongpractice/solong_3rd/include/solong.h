@@ -43,6 +43,8 @@ typedef struct s_game
 	int		walk_cnt;
 	int		start;
 	int		end;
+	int		*map_start;
+	int		*map_end;
 }			t_game;
 
 typedef struct s_queue
@@ -66,7 +68,7 @@ int			pathfinding(t_game *game, int start, int end);
 
 //image.c
 t_img		img_init(void *mlx);
-void		put_img(t_game *g, int w, int h);
+void		put_img(t_game *game, int w, int h);
 void		setting_img(t_game *game);
 
 //keycode.c
@@ -79,7 +81,7 @@ void		move_d(t_game *g);
 
 //solong.c
 void		print_err(char *message);
-void		game_init(t_game *g, char *map);
+void		game_init(t_game *game, char *map);
 int			exit_game(t_game *game);
 int			press_key(int key_code, t_game *game);
 int			main(int argc, char **argv);
