@@ -6,20 +6,20 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:46:09 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/21 16:35:04 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:21:08 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#  include <stdarg.h>
-#  include <stdlib.h>
-#  include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#  ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 10
-#  endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 typedef struct s_list
 {
@@ -84,4 +84,4 @@ int					ft_print_ptr(unsigned long long ptr);
 int					ft_print_unsigned(unsigned int nbr);
 int					ft_putchar(char c);
 
-# endif
+#endif

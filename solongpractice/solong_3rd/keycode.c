@@ -6,32 +6,32 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:54:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:54:54 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:27:07 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/solong.h"
 
-int clear_game(t_game *game)
+int	clear_game(t_game *g)
 {
-	game->walk_cnt++;
-	printf("%s %d%s\n", "You are succesfully escaped!", game->walk_cnt, "steps.");
+	g->walk_cnt++;
+	printf("%s %d%s\n", "You are succesfully escaped!", g->walk_cnt, "steps.");
 	exit(0);
 }
 
-void move_w(t_game *g)
+void	move_w(t_game *g)
 {
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strleni(g->str_line))
+	while (i++ < ft_strleni(g->str_line))
 	{
-		if(g->str_line[i] == 'P') //startpoint
+		if (g->str_line[i] == 'P')
 			break ;
 	}
-	if (g->str_line[i - g->wid] == 'C') //collectible
+	if (g->str_line[i - g->wid] == 'C')
 		g->col_cnt++;
-	if (g->str_line[i - g->wid] == 'E' && g->all_col == g->col_cnt)  //winning condition
+	if (g->str_line[i - g->wid] == 'E' && g->all_col == g->col_cnt)
 		clear_game(g);
 	else if (g->str_line[i - g->wid] != '1' && g->str_line[i - g->wid] != 'E')
 	{
@@ -43,19 +43,19 @@ void move_w(t_game *g)
 	}
 }
 
-void move_a(t_game *g)
+void	move_a(t_game *g)
 {
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strleni(g->str_line))
+	while (i++ < ft_strleni(g->str_line))
 	{
-		if(g->str_line[i] == 'P') //startpoint
+		if (g->str_line[i] == 'P')
 			break ;
 	}
-	if (g->str_line[i - 1] == 'C') //collectible
+	if (g->str_line[i - 1] == 'C')
 		g->col_cnt++;
-	if (g->str_line[i - 1] == 'E' && g->all_col == g->col_cnt)  //winning condition
+	if (g->str_line[i - 1] == 'E' && g->all_col == g->col_cnt)
 		clear_game(g);
 	else if (g->str_line[i - 1] != '1' && g->str_line[i - 1] != 'E')
 	{
@@ -67,19 +67,19 @@ void move_a(t_game *g)
 	}
 }
 
-void move_s(t_game *g)
+void	move_s(t_game *g)
 {
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strleni(g->str_line))
+	while (i++ < ft_strleni(g->str_line))
 	{
-		if(g->str_line[i] == 'P') //startpoint
+		if (g->str_line[i] == 'P')
 			break ;
 	}
-	if (g->str_line[i + g->wid] == 'C') //collectible
+	if (g->str_line[i + g->wid] == 'C')
 		g->col_cnt++;
-	if (g->str_line[i + g->wid] == 'E' && g->all_col == g->col_cnt)  //winning condition
+	if (g->str_line[i + g->wid] == 'E' && g->all_col == g->col_cnt)
 		clear_game(g);
 	else if (g->str_line[i + g->wid] != '1' && g->str_line[i + g->wid] != 'E')
 	{
@@ -91,19 +91,19 @@ void move_s(t_game *g)
 	}
 }
 
-void move_d(t_game *g)
+void	move_d(t_game *g)
 {
 	int	i;
 
 	i = 0;
-	while(i++ < ft_strleni(g->str_line))
+	while (i++ < ft_strleni(g->str_line))
 	{
-		if(g->str_line[i] == 'P') //startpoint
+		if (g->str_line[i] == 'P')
 			break ;
 	}
-	if (g->str_line[i + 1] == 'C') //collectible
+	if (g->str_line[i + 1] == 'C')
 		g->col_cnt++;
-	if (g->str_line[i + 1] == 'E' && g->all_col == g->col_cnt)  //winning condition
+	if (g->str_line[i + 1] == 'E' && g->all_col == g->col_cnt)
 		clear_game(g);
 	else if (g->str_line[i + 1] != '1' && g->str_line[i + 1] != 'E')
 	{

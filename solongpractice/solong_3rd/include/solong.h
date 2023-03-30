@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solong.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 19:23:48 by junheeki          #+#    #+#             */
+/*   Updated: 2023/03/30 20:22:45 by junheeki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SOLONG_H
 # define SOLONG_H
 # define KEY_ESC 53
@@ -13,17 +25,13 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
-
-typedef struct s_pos
-{
-	int		x;
-	int		y;
-}			t_pos;
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_img
 {
 	void	*player;
-	void	*collectible;
+	void	*col;
 	void	*land;
 	void	*wall;
 	void	*exit;
@@ -34,7 +42,6 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	t_pos	*pos;
 	int		wid;
 	int		hei;
 	char	*str_line;
@@ -43,15 +50,11 @@ typedef struct s_game
 	int		walk_cnt;
 	int		start;
 	int		end;
-	int		*map_start;
-	int		*map_end;
-}			t_game;
-
-typedef struct s_queue
-{
+	int		**map2d;
 	int		x;
 	int		y;
-}			t_queue;
+	int		z;
+}			t_game;
 
 //util.c
 int			ft_strleni(const char *str);
@@ -59,12 +62,11 @@ char		*ft_strdupn(char *s);
 int			ft_strlcpyn(char *dst, char *src, int len);
 char		*ft_strjoinn(char *s1, char *s2);
 
-//map.c
+//map_re.c
 void		map_read(char *filename, t_game *game);
+int			**map_array(char *map, t_game *game);
 void		map_check_wall(t_game *game);
-void		map_check_params(t_game *game);
 void		map_check(t_game *game);
-int			pathfinding(t_game *game, int start, int end);
 
 //image.c
 t_img		img_init(void *mlx);
@@ -84,6 +86,8 @@ void		print_err(char *message);
 void		game_init(t_game *game, char *map);
 int			exit_game(t_game *game);
 int			press_key(int key_code, t_game *game);
-int			main(int argc, char **argv);
+
+//map_check.c
+void	map_check_params(t_game *game);
 
 #endif

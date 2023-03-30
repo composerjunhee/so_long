@@ -1,5 +1,5 @@
 NAME := solong
-SRCS := solong.c image.c keycode.c map.c util.c
+SRCS := solong.c image.c keycode.c util.c map_re.c map_check.c
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
 FLAGS := -Wall -Wextra -Werror -g

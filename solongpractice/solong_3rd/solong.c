@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:55:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/29 17:12:34 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:39:45 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ void	print_err(char *message)
 	exit(1);
 }
 
-void	game_init(t_game *game, char *map)
+void	game_init(t_game *g, char *map)
 {
-	game->mlx = mlx_init();
-	game->img = img_init(game->mlx);
-	map_read(map, game);
-	map_check(game);
-	game->win = mlx_new_window(game->mlx, game->wid * 32, game->hei * 32, "so_long");
-	setting_img(game);
+	int **map;
+
+	g->mlx = mlx_init();
+	g->img = img_init(g->mlx);
+	map_read(map, g);
+	map = map_array(argv[1], g);
+	map_check(g);
+	g->win = mlx_new_window(g->mlx, g->wid * 32, g->hei * 32, "so_long");
+	setting_img(g);
 }
 
 int	exit_game(t_game *game)
@@ -53,11 +56,13 @@ int	press_key(int key_code, t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	*game;
+	int		**map;
 
 	if (argc != 2)
 		print_err("Map is missing. \n");
 	game = malloc(sizeof(t_game));
 	game_init(game, argv[1]);
+	map = map_array(argv[1], game);
 	mlx_hook(game->win, KEY_PRESS, 0, &press_key, game);
 	mlx_hook(game->win, PRESS_RED_BUTTON, 0, &exit_game, game);
 	mlx_loop(game->mlx);

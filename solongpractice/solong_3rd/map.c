@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:20:31 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/29 17:51:00 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:09:37 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,51 +64,51 @@ void	map_check_wall(t_game *game)
 	}
 }
 
-void	map_check_params(t_game *game)
-{
-	int	i;
-	int	num_e;
-	int	num_p;
+// void	map_check_params(t_game *game)
+// {
+// 	int	i;
+// 	int	num_e;
+// 	int	num_p;
 
-	i = 0;
-	num_e = 0;
-	num_p = 0;
-	game->all_col = 0;
-	game->col_cnt = 0;
-	while (i++ < ft_strleni(game->str_line))
-	{
-		if (game->str_line[i] == 'E')
-		{
-			num_e++;
-			if(num_e == 1)
-			{
-				game->map_end = malloc(sizeof(int) * 2);
-				game->map_end[0] = i % game->wid; // X
-				game->map_end[1] = i / game->wid; // Y
-			}
-			else
-				print_err("Map must have at least one exit\n");
-		}
-		else if (game->str_line[i] == 'P')
-		{
-			num_p++;
-			{
-				if(num_p == 1)
-				{
-					game->map_start = malloc(sizeof(int) * 2);
-					game->map_start[0] = i % game->wid; // X
-					game->map_start[1] = i / game->wid; // Y
-				}
-				else
-					print_err("Map must have one starting position\n");
-			}
-		}
-		else if (game->str_line[i] == 'C')
-			game->all_col++;
-	}
-	if (game->all_col == 0)
-		print_err("Map must have at least one collectible\n");
-}
+// 	i = 0;
+// 	num_e = 0;
+// 	num_p = 0;
+// 	game->all_col = 0;
+// 	game->col_cnt = 0;
+// 	while (i++ < ft_strleni(game->str_line))
+// 	{
+// 		if (game->str_line[i] == 'E')
+// 		{
+// 			num_e++;
+// 			if(num_e == 1)
+// 			{
+// 				game->map_end = malloc(sizeof(int) * 2);
+// 				game->map_end[0] = i % game->wid; // X
+// 				game->map_end[1] = i / game->wid; // Y
+// 			}
+// 			else
+// 				print_err("Map must have at least one exit\n");
+// 		}
+// 		else if (game->str_line[i] == 'P')
+// 		{
+// 			num_p++;
+// 			{
+// 				if(num_p == 1)
+// 				{
+// 					game->map_start = malloc(sizeof(int) * 2);
+// 					game->map_start[0] = i % game->wid; // X
+// 					game->map_start[1] = i / game->wid; // Y
+// 				}
+// 				else
+// 					print_err("Map must have one starting position\n");
+// 			}
+// 		}
+// 		else if (game->str_line[i] == 'C')
+// 			game->all_col++;
+// 	}
+// 	if (game->all_col == 0)
+// 		print_err("Map must have at least one collectible\n");
+// }
 
 // // pathfinding function
 // queue = pos
@@ -212,20 +212,19 @@ int	pathfinding(t_game *game, int start, int end)
 
 void	map_check(t_game *game)
 {
-	int start;
-	int end;
+	// int start;
+	// int end;
 
 	if (game->hei * game->wid != ft_strleni(game->str_line))
 		print_err("Map must be rectangular.\n");
 	map_check_wall(game);
-	map_check_params(game);
-	start = game->map_start[1] * game->wid + game->map_start[0];
-	printf("start: %d x: %d y: %d\n", start, game->map_start[0], game->map_start[1]);
-	end = game->map_end[1] * game->wid + game->map_end[0];
-	if(!pathfinding(game, start, end))
-	{
-		printf("Error: Player cannot reach the exit.\n");
-		free(game->str_line);
-		exit(1);
-	}
+	//map_check_params(game);
+	// start = game->map_start[1] * game->wid + game->map_start[0];
+	// end = game->map_end[1] * game->wid + game->map_end[0];
+	// if(!pathfinding(game, start, end))
+	// {
+	// 	printf("Error: Player cannot reach the exit.\n");
+	// 	free(game->str_line);
+	// 	exit(1);
+	// }
 }
