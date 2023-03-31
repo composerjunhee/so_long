@@ -1,5 +1,0 @@
-1 : Wall
-0 : Empty Space(road)
-C : Collectable
-E : Exit
-P : Player starting position
