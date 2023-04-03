@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:15:18 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/31 17:05:21 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:53:57 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	**map_array(char *map, t_game *game)
 
 	arr[1] = '\0';
 	str = NULL;
-	game->map2d = (int **)malloc(game->hei * sizeof(int *)); //protect
+	game->map2d = (int **)malloc(game->hei * sizeof(int *));
 	if(!game->map2d)
 		return (0);
 	game->x = -1;
@@ -64,9 +64,9 @@ int	**map_array(char *map, t_game *game)
 			arr[0] = str[game->y];
 			if (ft_strncmp(arr, "P", 1) == 0)
 			{
+				game->player_y = game->x;
+				game->player_x = game->y;
 				game->map2d[game->x][game->y] = 2;
-				game->player_x = game->x;
-				game->player_y = game->y;
 			}
 			else if (ft_strncmp(arr, "C", 1) == 0)
 				game->map2d[game->x][game->y] = 3;

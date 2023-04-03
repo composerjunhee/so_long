@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:55:27 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/31 17:06:02 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:58:29 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	main(int argc, char **argv)
 	//check validity path
 	//game->map2d = map;
 	check_valid_path(game->player_x, game->player_y, game->map2d, game);
+	if (game->validity != 1)
+		print_err("Error: Player cannot reach the exit.\n");
 	game_window(game);
 	mlx_hook(game->win, KEY_PRESS, 0, &press_key, game);
 	mlx_hook(game->win, PRESS_RED_BUTTON, 0, &exit_game, game);
