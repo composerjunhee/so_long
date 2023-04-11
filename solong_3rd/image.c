@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:09:51 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/30 19:25:33 by junheeki         ###   ########.fr       */
+/*   Created: 2023/04/06 14:19:18 by junheeki          #+#    #+#             */
+/*   Updated: 2023/04/06 15:06:12 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,29 @@ t_img	img_init(void *mlx)
 
 void	put_img(t_game *g, int w, int h)
 {
-	if (g->str_line[h * g->wid + w] == '1')
+	if (g->map_line[h * g->m.wid + w] == '1')
 	{
+		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
 		mlx_put_image_to_window(g->mlx, g->win, g->img.wall, w * 32, h * 32);
 	}
-	else if (g->str_line[h * g->wid + w] == 'C')
+	else if (g->map_line[h * g->m.wid + w] == 'C')
 	{
+		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
 		mlx_put_image_to_window(g->mlx, g->win, g->img.col, w * 32, h * 32);
 	}
-	else if (g->str_line[h * g->wid + w] == 'P')
+	else if (g->map_line[h * g->m.wid + w] == 'P')
 	{
+		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
 		mlx_put_image_to_window(g->mlx, g->win, g->img.player, w * 32, h * 32);
 	}
-	else if (g->str_line[h * g->wid + w] == 'E' && g->all_col == g->col_cnt)
+	else if (g->map_line[h * g->m.wid + w] == 'E' && g->m.all_col == g->m.col_cnt)
 	{
+		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
 		mlx_put_image_to_window(g->mlx, g->win, g->img.exit, w * 32, h * 32);
 	}
-	else if (g->str_line[h * g->wid + w] == 'E')
+	else if (g->map_line[h * g->m.wid + w] == 'E')
 	{
+		mlx_put_image_to_window(g->mlx, g->win, g->img.land, w * 32, h * 32);
 		mlx_put_image_to_window(g->mlx, g->win, g->img.exit, w * 32, h * 32);
 	}
 	else
@@ -61,10 +66,10 @@ void	setting_img(t_game *game)
 	int	wid;
 
 	hei = 0;
-	while (hei < game->hei)
+	while (hei < game->m.hei)
 	{
 		wid = 0;
-		while (wid < game->wid)
+		while (wid < game->m.wid)
 		{
 			put_img(game, wid, hei);
 			wid++;

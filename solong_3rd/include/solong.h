@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 19:23:48 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/31 17:05:28 by junheeki         ###   ########.fr       */
+/*   Created: 2023/04/05 16:01:05 by junheeki          #+#    #+#             */
+/*   Updated: 2023/04/06 15:30:20 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,77 +26,87 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 
 typedef struct s_img
 {
-	void	*player;
-	void	*col;
-	void	*land;
-	void	*wall;
-	void	*exit;
-}			t_img;
+	void		*player;
+	void		*col;
+	void		*land;
+	void		*wall;
+	void		*exit;
+}				t_img;
+
+typedef struct s_player
+{
+	int			player_x;
+	int			player_y;
+}				t_player;
+
+typedef struct s_map
+{
+	int			wid;
+	int			hei;
+	int			validity;
+	int			reach_exit;
+	int			all_col;
+	int			col_cnt;
+}				t_map;
 
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	t_img	img;
-	int		wid;
-	int		hei;
-	char	*str_line;
-	int		all_col;
-	int		all_col2d;
-	int		col_cnt;
-	int		walk_cnt;
-	int		start;
-	int		end;
-	int		**map2d;
-	int		x;
-	int		y;
-	int		z;
-	int		validity;
-	int		reach_exit;
-	int		player_x;
-	int		player_y;
-}			t_game;
+	void		*mlx;
+	void		*win;
+	int			**map2d;
+	char		*map_line;
+	int			walk_cnt;
+	int			x;
+	int			y;
+	int			cnt;
+	t_player	p;
+	t_img		img;
+	t_map		m;
+}				t_game;
 
-//util.c
-int			ft_strleni(const char *str);
-char		*ft_strdupn(char *s);
-int			ft_strlcpyn(char *dst, char *src, int len);
-char		*ft_strjoinn(char *s1, char *s2);
+//game.c
+void			game_init(t_game *game, char *map);
+void			game_window(t_game *game);
+int				press_key(int key_code, t_game *game);
+int				exit_game(t_game *game);
 
-//map_re.c
-void		map_read(char *filename, t_game *game);
-int			**map_array(char *map, t_game *game);
-void		map_check(t_game *game);
+//map_array.c
+void			map_read(char *filename, t_game *game);
+int				**map_array(char *map, t_game *game);
+
+//map_read.c
+void			map_read(char *filename, t_game *game);
+int				**map_array(char *map, t_game *game);
 
 //image.c
-t_img		img_init(void *mlx);
-void		put_img(t_game *game, int w, int h);
-void		setting_img(t_game *game);
+t_img			img_init(void *mlx);
+void			put_img(t_game *g, int w, int h);
+void			setting_img(t_game *game);
 
 //keycode.c
+int				clear_game(t_game *g);
+void			move_w(t_game *g);
+void			move_a(t_game *g);
+void			move_s(t_game *g);
+void			move_d(t_game *g);
 
-int			clear_game(t_game *game);
-void		move_w(t_game *g);
-void		move_a(t_game *g);
-void		move_s(t_game *g);
-void		move_d(t_game *g);
+//util.c
+int				ft_strleni(const char *str);
+char			*ft_strdupn(char *s);
+int				ft_strlcpyn(char *dst, char *src, int len);
+char			*ft_strjoinn(char *s1, char *s2);
 
-//solong.c
-void		print_err(char *message);
-void		game_init(t_game *game, char *map);
-int			exit_game(t_game *game);
-int			press_key(int key_code, t_game *game);
+//errors.c
+void	print_err(char *message);
 
 //map_check.c
 void	map_check_params(t_game *game);
 void	map_check_wall(t_game *game);
-
-void	game_window(t_game *g);
-
-//map_validpath.c
+void	map_check_chracter(t_game *game);
 void	check_valid_path(int column, int row, int **map, t_game *g);
+void	map_check(t_game *game);
+
 #endif

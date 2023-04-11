@@ -5,25 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:35:22 by junheeki          #+#    #+#             */
-/*   Updated: 2023/03/31 12:53:02 by junheeki         ###   ########.fr       */
+/*   Created: 2023/04/06 15:11:55 by junheeki          #+#    #+#             */
+/*   Updated: 2023/04/06 15:12:15 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/solong.h"
-
-void	print_err(char *message)
-{
-	write(2, "Error\n", 6);
-	write(2, message, ft_strlen(message));
-	exit(1);
-}
-
-int	exit_game(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
-}
 
 int	ft_strleni(const char *str)
 {
