@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:01:05 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/06 15:30:20 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:39:10 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
-# include <stdio.h>
-# include <stdlib.h>
 
 typedef struct s_img
 {
@@ -62,6 +60,8 @@ typedef struct s_game
 	int			x;
 	int			y;
 	int			cnt;
+	int			num_e;
+	int			num_p;
 	t_player	p;
 	t_img		img;
 	t_map		m;
@@ -73,13 +73,11 @@ void			game_window(t_game *game);
 int				press_key(int key_code, t_game *game);
 int				exit_game(t_game *game);
 
-//map_array.c
-void			map_read(char *filename, t_game *game);
-int				**map_array(char *map, t_game *game);
-
 //map_read.c
 void			map_read(char *filename, t_game *game);
 int				**map_array(char *map, t_game *game);
+int				check_sources(t_game *game, int fd);
+int				check_pce(t_game *game, char arr);
 
 //image.c
 t_img			img_init(void *mlx);
@@ -100,13 +98,13 @@ int				ft_strlcpyn(char *dst, char *src, int len);
 char			*ft_strjoinn(char *s1, char *s2);
 
 //errors.c
-void	print_err(char *message);
+void			print_err(char *message);
 
 //map_check.c
-void	map_check_params(t_game *game);
-void	map_check_wall(t_game *game);
-void	map_check_chracter(t_game *game);
-void	check_valid_path(int column, int row, int **map, t_game *g);
-void	map_check(t_game *game);
+void			map_check_params(t_game *game);
+void			map_check_wall(t_game *game);
+void			map_check_chracter(t_game *game);
+void			check_valid_path(int column, int row, int **map, t_game *g);
+void			map_check(t_game *game);
 
 #endif

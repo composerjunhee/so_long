@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:57:05 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/05 19:04:35 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:38:39 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	clear_game(t_game *g)
 {
 	g->walk_cnt++;
-	printf("%s %d%s\n", "You are succesfully escaped!", g->walk_cnt, "steps.");
+	ft_printf("%s %d%s\n", "Succesfully escaped!", g->walk_cnt, "steps.");
 	exit(0);
 }
 
@@ -33,7 +33,8 @@ void	move_w(t_game *g)
 		g->m.col_cnt++;
 	if (g->map_line[i - g->m.wid] == 'E' && g->m.all_col == g->m.col_cnt)
 		clear_game(g);
-	else if (g->map_line[i - g->m.wid] != '1' && g->map_line[i - g->m.wid] != 'E')
+	else if (g->map_line[i - g->m.wid] != '1' && g->map_line[i
+			- g->m.wid] != 'E')
 	{
 		g->map_line[i] = '0';
 		g->map_line[i - g->m.wid] = 'P';
@@ -81,7 +82,8 @@ void	move_s(t_game *g)
 		g->m.col_cnt++;
 	if (g->map_line[i + g->m.wid] == 'E' && g->m.all_col == g->m.col_cnt)
 		clear_game(g);
-	else if (g->map_line[i + g->m.wid] != '1' && g->map_line[i + g->m.wid] != 'E')
+	else if (g->map_line[i + g->m.wid] != '1' && g->map_line[i
+			+ g->m.wid] != 'E')
 	{
 		g->map_line[i] = '0';
 		g->map_line[i + g->m.wid] = 'P';
