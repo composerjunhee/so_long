@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:01:05 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/13 02:24:03 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:54:04 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
-# include <stdbool.h>
 
 typedef struct s_img
 {
@@ -68,12 +67,6 @@ typedef struct s_game
 	t_map		m;
 }				t_game;
 
-typedef struct s_point
-{
-	int			x;
-	int			y;
-}	t_point;
-
 //game.c
 void			game_init(t_game *game, char *map);
 void			game_window(t_game *game);
@@ -103,8 +96,6 @@ int				ft_strleni(const char *str);
 char			*ft_strdupn(char *s);
 int				ft_strlcpyn(char *dst, char *src, int len);
 char			*ft_strjoinn(char *s1, char *s2);
-
-//errors.c
 void			print_err(char *message);
 
 //map_check.c
@@ -113,9 +104,5 @@ void			map_check_wall(t_game *game);
 void			map_check_chracter(t_game *game);
 void			check_valid_path(int column, int row, int **map, t_game *g);
 void			map_check(t_game *game);
-
-//screen.c
-bool larger_window(t_game *game);
-t_point get_screen_size(t_game *game);
 
 #endif

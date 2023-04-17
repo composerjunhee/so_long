@@ -1,8 +1,8 @@
-NAME := solong
-SRCS := errors.c game.c image.c keycode.c main.c map_check.c map_read.c util.c
+NAME := so_long
+SRCS := game.c image.c keycode.c main.c map_check.c map_read.c util.c
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
-FLAGS := -Wall -Wextra -Werror -g
+FLAGS := -Wall -Wextra -Werror
 
 all: $(NAME)
 

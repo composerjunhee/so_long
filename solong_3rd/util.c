@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:11:55 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/06 15:12:15 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:53:37 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,11 @@ char	*ft_strjoinn(char *s1, char *s2)
 	free(s1);
 	free(s2);
 	return (new_mem);
+}
+
+void	print_err(char *message)
+{
+	write(2, "Error\n", 6);
+	write(2, message, ft_strlen(message));
+	exit(1);
 }

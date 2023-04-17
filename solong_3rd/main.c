@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:21 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/06 15:43:43 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:32:17 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
 		print_err("ex) ./solong map.ber <- Follow the Format \n");
 	game = malloc(sizeof(t_game));
+	if (!game)
+		print_err("Malloc Fails");
 	game_init(game, argv[1]);
 	game->map2d = map_array(argv[1], game);
 	map_check(game);

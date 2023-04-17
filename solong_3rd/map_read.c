@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:38:22 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/12 16:42:06 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:29:17 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,14 @@ int	**map_array(char *map, t_game *game)
 	arr[1] = '\0';
 	game->map2d = (int **)malloc(game->m.hei * sizeof(int *));
 	if (!game->map2d)
-		return (0);
+		print_err("Malloc Fails");
 	game->x = -1;
 	while (++game->x < game->m.hei)
+	{
 		game->map2d[game->x] = (int *)malloc(game->m.wid * sizeof(int));
+		if (!game->map2d[game->x])
+			print_err("Malloc Fails");
+	}
 	game->x = 0;
 	game->y = -1;
 	game->cnt = -1;

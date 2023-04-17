@@ -6,7 +6,7 @@
 /*   By: junheeki <junheeki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:09:39 by junheeki          #+#    #+#             */
-/*   Updated: 2023/04/13 02:23:08 by junheeki         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:47:05 by junheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	game_init(t_game *game, char *map)
 	game->mlx = mlx_init();
 	game->img = img_init(game->mlx);
 	map_read(map, game);
-	if(larger_window(game))
-	{
-		print_err("Map size is lager than display");
-		exit_game(game);
-	}
 	game->m.all_col = 0;
 	game->m.col_cnt = 0;
 	game->m.validity = 0;
